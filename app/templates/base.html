@@ -1,0 +1,27 @@
+{% from 'bootstrap/nav.html' import render_nav_item %} {# 导入Bootstrap-Flask的内置函数 #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} {# 标题块 #}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap/bootstrap.css') }}"> {# 引入自定义的Bootstrap css #}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">AttributeError</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {{ render_nav_item('main.index', '首页') }} {# 使用Bootstrap-Flask内置的函数渲染导航链接 #}
+            </ul>
+          </div>
+    </nav>
+    <br>
+    {% block content %}{% endblock %} {# 内容块 #}
+</body>
+{% block scripts %} {# JS代码块 #}
+    {{ bootstrap.load_js() }} {# 引入bootstrap-flask内置的JavaScript #}
+{% endblock %}
+</html>
