@@ -1,3 +1,5 @@
+# app.py
+
 from app import create_app  # 导入create_app
 
 app = create_app()  # 创建应用
