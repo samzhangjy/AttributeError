@@ -1,0 +1,17 @@
+<h1>认证你的账号</h1>
+
+<p>Hi, {{ user.username }}!</p>
+
+<p>要认证你的账号，<a href="{{ url_for('auth.confirm_user', token=token, _external=True) }}">点击这里</a>来认证！</p>
+
+<p>当然，你也可以复制以下链接到你的浏览器中：</p>
+
+<a href="{{ url_for('auth.confirm_user', token=token, _external=True) }}">
+    {{ url_for('auth.confirm_user', token=token, _external=True) }}
+</a>
+
+<p>祝你玩的愉快，</p>
+
+<p>AttributeError团队</p>
+
+<small>注：所有对此邮箱发送的邮件不会被回复</small>

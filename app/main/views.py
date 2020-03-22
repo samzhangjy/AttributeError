@@ -1,7 +1,8 @@
 # app/main/views.py
 
-from flask import render_template  # 导入渲染模板函数
+from flask import render_template, request  # 导入渲染模板函数
 from . import main  # 导入蓝图
+from flask_login import current_user
 
 
 @main.route('/')  # 定义路由

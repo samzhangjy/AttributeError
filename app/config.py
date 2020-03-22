@@ -12,6 +12,12 @@ class DevelopmentConfig:
                                                                                   os.environ.get('DEV_DATABASE_NAME'))
     # 不跟踪变化
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = 'this is my secret key!!'  # 设置密钥
+    MAIL_USERNAME = 'apikey'
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    MAIL_SERVER = 'smtp.sendgrid.net'
+    MAIL_PORT = 465
+    MAIL_USE_SSL = True
 
 
 class ProductionConfig:
@@ -20,6 +26,12 @@ class ProductionConfig:
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI') or 'mysql+pymysql://root:%s@localhost:3306/%s?charset' \
                                '=utf8mb4' % (os.environ.get('DATABASE_PASS'), os.environ.get('DATABASE_NAME'))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'secret key'  # 生产环境首先使用环境变量中的密钥
+    MAIL_USERNAME = 'apikey'
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    MAIL_SERVER = 'smtp.sendgrid.net'
+    MAIL_PORT = 465
+    MAIL_USE_SSL = True
 
 
 # 设置在不同情况下使用的config

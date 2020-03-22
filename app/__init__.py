@@ -5,6 +5,7 @@ import os
 from flask import Flask  # 导入Flask
 from .extensions import *  # 导入已经实例化了的扩展
 from app.config import config  # 导入config
+from .models import User
 
 
 def create_app():
@@ -16,6 +17,13 @@ def create_app():
     bootstrap.init_app(app)
     db.init_app(app)
     migrate.init_app(app, db)
+    bcrypt.init_app(app)
+    login_manager.init_app(app)
+    mail.init_app(app)
+
+    @login_manager.user_loader  # 定义用户加载器
+    def load_user(id):
+        return User.query.get(id)
 
     from .main import main as main_bp  # 导入蓝图
     app.register_blueprint(main_bp)  # 注册蓝图到应用

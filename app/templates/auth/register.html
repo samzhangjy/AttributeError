@@ -1,0 +1,14 @@
+<!--app/templates/register.html-->
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_form %}
+
+{% block title %}注册 - AttributeError{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>注册</h1>
+        <p>已有账号？<a href="{{ url_for('auth.login') }}">点击这里</a>登录</p>
+        <hr>
+        {{ render_form(form, button_map={'submit': 'primary'}) }} {# 将button_map设置为primary #}
+    </div>
+{% endblock %}

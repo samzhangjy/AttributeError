@@ -1,0 +1,14 @@
+<!--app/templates/login.html-->
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_form %}
+
+{% block title %}登录 - AttributeError{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>登录</h1>
+        <p>还没有账号？<a href="{{ url_for('auth.register') }}">点击这里</a>注册</p>
+        <hr>
+        {{ render_form(form, button_map={'submit': 'primary'}) }}
+    </div>
+{% endblock %}

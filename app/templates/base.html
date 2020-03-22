@@ -1,5 +1,7 @@
 <!--app/templates/base.html-->
-{% from 'bootstrap/nav.html' import render_nav_item %} {# 导入Bootstrap-Flask的内置函数 #}
+{# 导入Bootstrap-Flask的内置函数 #}
+{% from 'bootstrap/nav.html' import render_nav_item %}
+{% from 'bootstrap/utils.html' import render_messages %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,16 +11,35 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">AttributeError</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                {{ render_nav_item('main.index', '首页') }} {# 使用Bootstrap-Flask内置的函数渲染导航链接 #}
-            </ul>
-          </div>
+        <div class="container">
+            <a class="navbar-brand" href="/">AttributeError</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    {{ render_nav_item('main.index', '首页') }} {# 使用Bootstrap-Flask内置的函数渲染导航链接 #}
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {% if not current_user.is_authenticated %}
+                        {{ render_nav_item('auth.login', '登录') }}
+                        {{ render_nav_item('auth.register', '注册') }}
+                    {% else %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Hi, {{ current_user.username }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{{ url_for('auth.logout') }}">登出</a>
+                            </div>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
     </nav>
+    <br>
+    {{ render_messages(container=True, dismissible=True, dismiss_animate=True) }} {# 使用Bootstrap-Flask内置函数渲染闪现消息 #}
     <br>
     {% block content %}{% endblock %} {# 内容块 #}
 </body>

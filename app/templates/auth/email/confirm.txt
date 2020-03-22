@@ -1,0 +1,15 @@
+认证你的账号
+
+Hi, {{ user.username }}!
+
+要认证你的账号，点击这里来认证！
+
+当然，你也可以复制以下链接到浏览器中：
+
+{{ url_for('auth.confirm_user', token=token) }}
+
+祝你玩的愉快，
+
+AttributeError团队
+
+注：所有对此邮箱发送的邮件不会被回复
