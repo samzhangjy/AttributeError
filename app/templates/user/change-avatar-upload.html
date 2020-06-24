@@ -1,0 +1,61 @@
+<!--app/templates/user/change-avatar-upload.html-->
+{% extends 'base.html' %}
+
+{% block title %}上传头像 - AttributeError{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>上传头像</h1>
+        <button class="btn btn-outline-primary" data-toggle="modal" data-target="#confirm">
+            恢复为默认头像
+        </button>
+        <hr>
+        <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">你确定吗？</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        你确定要将头像恢复为默认头像吗？你之后还可以将其设置为自定义头像
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                        <a class="btn btn-primary" href="{{ url_for('user.default_avatar') }}">确定</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            <div class="input-group">
+                <input id='location' class="form-control" onclick="$('#file').click();">
+                <label class="input-group-prepend">
+                    <input type="button" value="上传头像" id="i-check" class="btn btn-primary rounded-right"
+                           onclick="$('#file').click();">
+                </label>
+            </div>
+            <input type="file" name="file" id='file' accept="image/png image/jpg image/jpeg image/gif"
+                   onchange="$('#location').val(getFileName(this.value));" style="display: none">
+            <button class="btn btn-success" type="submit">上传</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script>
+        function getFileName(path) {
+            var pos1 = path.lastIndexOf('/');
+            var pos2 = path.lastIndexOf('\\');
+            var pos = Math.max(pos1, pos2);
+            if (pos < 0)
+                return path;
+            else
+                return path.substring(pos + 1);
+        }
+    </script>
+{% endblock %}

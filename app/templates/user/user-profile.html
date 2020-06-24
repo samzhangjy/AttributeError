@@ -1,0 +1,24 @@
+<!--app/templates/user/user-profile.html-->
+{% extends 'base.html' %}
+
+{% block title %}{{ user.username }} - AttributeError{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row container">
+            <div class="col col-3 text-center">
+                <img class="rounded-circle img-fluid" src="{{ url_for('static', filename='avatars/%s' % user.avatar_l) }}" onerror="this.src='{{ avatars.default(size='l') }}';">
+                {% if user == current_user %} {# 判断用户是不是当前用户 #}
+                    <br><a style="margin-top: 10px" href="{{ url_for('user.upload') }}" class="btn btn-primary">更改头像 <span class="fa fa-edit"></span></a>
+                {% endif %}
+            </div>
+            <div class="col col-9">
+                <h1>{{ user.username }}{% if user.real_name %} <small><small><small class="text-muted font-weight-light"> {{ user.real_name }}</small></small></small>{% endif %}{% if user.gender == 'male' %} <span class="fa fa-mars" style="font-size: 50%; color: #007bff"></span>{% elif user.gender == 'female' %} <span class="fa fa-venus" style="font-size: 50%; color: #e83e8c"></span>{% endif %}</h1>
+                {% if user.site %}<p><a href="//{{ user.site }}" target="_blank">{{ user.site }} <small class="fa fa-external-link text-secondary"></small></a></p>{% endif %}
+                {% if user.about %}<span class="fa fa-quote-left"></span> <blockquote class="blockquote font-italic font-weight-light">{{ user.about }}</blockquote>{% endif %}
+                注册于{{ moment(user.member_since).fromNow() }}
+            </div>
+        </div>
+        <hr>
+    </div>
+{% endblock %}

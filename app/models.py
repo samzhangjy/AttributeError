@@ -4,6 +4,8 @@ from itsdangerous import Serializer
 
 from .extensions import db, bcrypt
 from flask_login import UserMixin
+from datetime import datetime
+from flask_avatars import Identicon
 
 
 class Role(db.Model):
@@ -40,10 +42,29 @@ class User(db.Model, UserMixin):  # User类继承自db.Model
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
     password = db.Column(db.String(255))  # 存放密码
     confirmed = db.Column(db.Boolean, default=False)
+    real_name = db.Column(db.String(64))  # 真实名称
+    about = db.Column(db.Text)  # 自我简介
+    member_since = db.Column(db.DateTime, default=datetime.utcnow())  # 注册时间
+    gender = db.Column(db.String(64))
+    site = db.Column(db.String(256))
+    avatar_s = db.Column(db.String(128))
+    avatar_m = db.Column(db.String(128))
+    avatar_l = db.Column(db.String(128))
+    raw_avatar = db.Column(db.String(128))
+    background = db.Column(db.String(128))
 
     def __init__(self, password, **kwargs):
         super().__init__(password=password, **kwargs)
         self.password = self.set_password(password)  # 初始化时将未加密的密码加密
+        self.generate_avatar()
+
+    def generate_avatar(self):
+        avatar = Identicon()
+        filenames = avatar.generate(text=self.username)
+        self.avatar_s = filenames[0]
+        self.avatar_m = filenames[1]
+        self.avatar_l = filenames[2]
+        db.session.commit()
 
     def set_password(self, password):
         return bcrypt.generate_password_hash(password)  # 调用Flask-Bcrypt内置函数生成密码哈希值

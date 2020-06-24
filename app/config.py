@@ -18,6 +18,8 @@ class DevelopmentConfig:
     MAIL_SERVER = 'smtp.sendgrid.net'
     MAIL_PORT = 465
     MAIL_USE_SSL = True
+    AVATARS_SAVE_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static/avatars/')
+    BACKGROUNDS_SAVE_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static/bg/')
 
 
 class ProductionConfig:
@@ -32,6 +34,8 @@ class ProductionConfig:
     MAIL_SERVER = 'smtp.sendgrid.net'
     MAIL_PORT = 465
     MAIL_USE_SSL = True
+    AVATARS_SAVE_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static/avatars/')
+    BACKGROUNDS_SAVE_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static/bg/')
 
 
 # 设置在不同情况下使用的config

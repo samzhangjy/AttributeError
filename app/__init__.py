@@ -20,6 +20,8 @@ def create_app():
     bcrypt.init_app(app)
     login_manager.init_app(app)
     mail.init_app(app)
+    moment.init_app(app)
+    avatars.init_app(app)
 
     @login_manager.user_loader  # 定义用户加载器
     def load_user(id):
@@ -30,5 +32,8 @@ def create_app():
 
     from .auth import auth as auth_bp
     app.register_blueprint(auth_bp)
+
+    from .user import user as user_bp
+    app.register_blueprint(user_bp)
 
     return app  # 返回app

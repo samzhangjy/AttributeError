@@ -40,8 +40,9 @@ def login():
             login_user(user, remember=remember)
             next = request.args.get('next')
             flash('登录成功！', 'success')
-            if is_safe_url(next):
-                return redirect(next)
+            if next:  # 验证有没有next
+                if is_safe_url(next):
+                    return redirect(next)
             return redirect(url_for('main.index'))
         flash('用户名或密码不正确', 'warning')
     return render_template('auth/login.html', form=form)

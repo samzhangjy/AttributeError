@@ -1,0 +1,31 @@
+<!--app/templates/user/change-avatar-crop.html-->
+{% extends 'base.html' %}
+
+{% block title %}更改头像 - AttributeError{% endblock %}
+
+{% block content %}
+    {{ avatars.jcrop_css() }}  <!--导入内置的jcrop css-->
+    <div class="container">
+        <h1>更改头像</h1>
+        <hr>
+        <div class="card">
+            <div class="card-body container-fluid">
+                {{ avatars.crop_box('user.get_avatar', current_user.raw_avatar) }}
+                {{ avatars.preview_box('user.get_avatar', current_user.raw_avatar) }}
+                <br>
+                <form method="post">
+                    <input type="hidden" id="x" name="x">
+                    <input type="hidden" id="y" name="y">
+                    <input type="hidden" id="w" name="w">
+                    <input type="hidden" id="h" name="h">
+                    <button type="submit" class="btn btn-primary">完成</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ avatars.jcrop_js() }}  <!--导入Flask-Avatars内置的jcrop js-->
+    {{ avatars.init_jcrop() }}
+{% endblock %}

@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca4cf8ee-010d-4775-ad2b-520086003436" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AttributeError.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/AttributeError.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AttributeError.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/auth/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/extensions.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/extensions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
     </list>
@@ -27,6 +22,7 @@
         <option value="Flask Main" />
         <option value="HTML File" />
         <option value="Python Script" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -54,14 +50,19 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/static/Bootstrap" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/static" />
+      <recent name="$PROJECT_DIR$/app/static/Bootstrap" />
     </key>
   </component>
   <component name="RunManager">
@@ -75,9 +76,9 @@
       <envs>
         <env name="FLASK_APP" value="app.py" />
       </envs>
-      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -103,7 +104,11 @@
       <workItem from="1584756545219" duration="2239000" />
       <workItem from="1584759068910" duration="4793000" />
       <workItem from="1584776606267" duration="293000" />
-      <workItem from="1584782497657" duration="9139000" />
+      <workItem from="1584782497657" duration="14984000" />
+      <workItem from="1584922748401" duration="4853000" />
+      <workItem from="1584951811073" duration="254000" />
+      <workItem from="1585202613156" duration="3559000" />
+      <workItem from="1585272481730" duration="9519000" />
     </task>
     <servers />
   </component>
@@ -119,10 +124,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="115" width="800" height="765" key="#Intentions/0.0.1440.900@0.0.1440.900" timestamp="1584796391387" />
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584327476617">
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585205012914">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1584327476617" />
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1585205012914" />
     <state x="475" y="286" width="489" height="496" key="#com.intellij.tools.ToolEditorDialog" timestamp="1584327092081">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -131,26 +136,46 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="474" y="208" key="EnvironmentVariablesDialog/0.0.1440.900@0.0.1440.900" timestamp="1584327136346" />
-    <state width="1398" height="244" key="GridCell.Tab.0.bottom" timestamp="1584838645250">
+    <state x="527" y="234" key="FileChooserDialogImpl" timestamp="1585204041122">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="244" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1584838645250" />
-    <state width="1398" height="244" key="GridCell.Tab.0.center" timestamp="1584838645249">
+    <state x="527" y="234" key="FileChooserDialogImpl/0.0.1440.900@0.0.1440.900" timestamp="1585204041122" />
+    <state width="1398" height="228" key="GridCell.Tab.0.bottom" timestamp="1585355322553">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="244" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1584838645249" />
-    <state width="1398" height="244" key="GridCell.Tab.0.left" timestamp="1584838645248">
+    <state width="1398" height="228" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1585355322553" />
+    <state width="1398" height="228" key="GridCell.Tab.0.center" timestamp="1585355322552">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="244" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1584838645248" />
-    <state width="1398" height="244" key="GridCell.Tab.0.right" timestamp="1584838645250">
+    <state width="1398" height="228" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1585355322552" />
+    <state width="1398" height="228" key="GridCell.Tab.0.left" timestamp="1585355322551">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="244" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1584838645250" />
-    <state x="387" y="178" key="SettingsEditor" timestamp="1584793721548">
+    <state width="1398" height="228" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1585355322551" />
+    <state width="1398" height="228" key="GridCell.Tab.0.right" timestamp="1585355322553">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="387" y="178" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1584793721548" />
+    <state width="1398" height="228" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1585355322553" />
+    <state width="1398" height="303" key="GridCell.Tab.1.bottom" timestamp="1584935492046">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1584935492046" />
+    <state width="1398" height="303" key="GridCell.Tab.1.center" timestamp="1584935492045">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1584935492045" />
+    <state width="1398" height="303" key="GridCell.Tab.1.left" timestamp="1584935492045">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1584935492045" />
+    <state width="1398" height="303" key="GridCell.Tab.1.right" timestamp="1584935492046">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="303" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1584935492046" />
+    <state x="248" y="112" key="SettingsEditor" timestamp="1585205033459">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="248" y="112" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1585205033459" />
     <state x="616" y="111" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey" timestamp="1584327093567">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -165,6 +190,6 @@
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1584759294831" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AttributeError$AttributeError.coverage" NAME="AttributeError Coverage Results" MODIFIED="1584795382869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AttributeError$AttributeError.coverage" NAME="AttributeError Coverage Results" MODIFIED="1585278901475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

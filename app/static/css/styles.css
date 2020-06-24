@@ -1,0 +1,167 @@
+/*app/static/css/styles.css*/
+
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    input[type='checkbox'],
+    input[type='radio'] {
+        --active: #ffc107;
+        --active-inner: #3b4146;
+        --input-border: #CDD9ED;
+        --input-border-hover: #ffd718;
+        --background: #fff;
+        --disabled: #F5F9FF;
+        --disabled-inner: #E4ECFA;
+        --shadow-inner: rgba(18, 22, 33, .1);
+        outline: none;
+        position: relative;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        box-shadow: none;
+        cursor: pointer;
+        height: 17px;
+        border: 1px solid var(--input-border);
+        background: var(--background);
+        transition: background .3s ease, border-color .3s ease;
+    }
+
+    input[type='checkbox']:after,
+    input[type='radio']:after {
+        content: '';
+        display: block;
+        left: 0;
+        top: 0;
+        position: absolute;
+        transition: opacity .2s ease, -webkit-transform .3s ease, -webkit-filter .3s ease;
+        transition: transform .3s ease, opacity .2s ease, filter .3s ease;
+        transition: transform .3s ease, opacity .2s ease, filter .3s ease, -webkit-transform .3s ease, -webkit-filter .3s ease;
+    }
+
+    input[type='checkbox']:checked,
+    input[type='radio']:checked {
+        background: var(--active);
+        border-color: var(--active);
+    }
+
+    input[type='checkbox']:checked:after,
+    input[type='radio']:checked:after {
+        -webkit-filter: drop-shadow(0 1px 2px var(--shadow-inner));
+        filter: drop-shadow(0 1px 2px var(--shadow-inner));
+        transition: opacity 0.3s ease, -webkit-filter 0.3s ease, -webkit-transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+        transition: opacity 0.3s ease, filter 0.3s ease, transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+        transition: opacity 0.3s ease, filter 0.3s ease, transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2), -webkit-filter 0.3s ease, -webkit-transform 0.6s cubic-bezier(0.175, 0.88, 0.32, 1.2);
+    }
+
+    input[type='checkbox']:disabled,
+    input[type='radio']:disabled {
+        cursor: not-allowed;
+        opacity: .9;
+        background: var(--disabled);
+    }
+
+    input[type='checkbox']:disabled:checked,
+    input[type='radio']:disabled:checked {
+        background: var(--disabled-inner);
+        border-color: var(--input-border);
+    }
+
+    input[type='checkbox']:hover:not(:checked):not(:disabled),
+    input[type='radio']:hover:not(:checked):not(:disabled) {
+        border-color: var(--input-border-hover);
+    }
+
+    input[type='checkbox']:not(.switch),
+    input[type='radio']:not(.switch) {
+        width: 17px;
+    }
+
+    input[type='checkbox']:not(.switch):after,
+    input[type='radio']:not(.switch):after {
+        opacity: 0;
+    }
+
+    input[type='checkbox']:not(.switch):checked:after,
+    input[type='radio']:not(.switch):checked:after {
+        opacity: 1;
+    }
+
+    input[type='checkbox']:not(.switch) {
+        border-radius: 4px;
+    }
+
+    input[type='checkbox']:not(.switch):after {
+        width: 4px;
+        height: 8px;
+        border: 2px solid var(--active-inner);
+        border-top: 0;
+        border-left: 0;
+        left: 6px;
+        top: 3px;
+        -webkit-transform: rotate(20deg);
+        transform: rotate(20deg);
+    }
+
+    input[type='checkbox']:not(.switch):checked:after {
+        -webkit-transform: rotate(43deg);
+        transform: rotate(43deg);
+    }
+
+    input[type='checkbox'].switch {
+        width: 38px;
+        border-radius: 11px;
+    }
+
+    input[type='checkbox'].switch:after {
+        left: 2px;
+        top: 2px;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        background: var(--input-border);
+    }
+
+    input[type='checkbox'].switch:checked:after {
+        background: var(--active-inner);
+        -webkit-transform: translateX(17px);
+        transform: translateX(17px);
+    }
+
+    input[type='checkbox'].switch:disabled:not(:checked):after {
+        opacity: .6;
+    }
+
+    input[type='radio'] {
+        border-radius: 50%;
+    }
+
+    input[type='radio']:after {
+        width: 19px;
+        height: 19px;
+        border-radius: 50%;
+        background: var(--active-inner);
+        opacity: 0;
+        -webkit-transform: scale(0.7);
+        transform: scale(0.7);
+    }
+
+    input[type='radio']:checked:after {
+        background: var(--active-inner);
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+}
+#preview-box {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: -280px;
+    padding: 6px;
+    border: 1px rgba(0, 0, 0, .4) solid;
+    background-color: white;
+
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+
+    -webkit-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+}

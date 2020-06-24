@@ -7,43 +7,50 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %} {# 标题块 #}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap/bootstrap.css') }}"> {# 引入自定义的Bootstrap css #}
+    {# 引入自定义的Bootstrap css #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.css') }}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="/">AttributeError</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    {{ render_nav_item('main.index', '首页') }} {# 使用Bootstrap-Flask内置的函数渲染导航链接 #}
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    {% if not current_user.is_authenticated %}
-                        {{ render_nav_item('auth.login', '登录') }}
-                        {{ render_nav_item('auth.register', '注册') }}
-                    {% else %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Hi, {{ current_user.username }}
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="{{ url_for('auth.logout') }}">登出</a>
-                            </div>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/">AttributeError</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {{ render_nav_item('main.index', '首页') }} {# 使用Bootstrap-Flask内置的函数渲染导航链接 #}
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                {% if not current_user.is_authenticated %}
+                    {{ render_nav_item('auth.login', '登录') }}
+                    {{ render_nav_item('auth.register', '注册') }}
+                {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hi, {{ current_user.username }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{{ url_for('auth.logout') }}">登出</a>
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
         </div>
-    </nav>
-    <br>
-    {{ render_messages(container=True, dismissible=True, dismiss_animate=True) }} {# 使用Bootstrap-Flask内置函数渲染闪现消息 #}
-    <br>
-    {% block content %}{% endblock %} {# 内容块 #}
+    </div>
+</nav>
+<br>
+{{ render_messages(container=True, dismissible=True, dismiss_animate=True) }} {# 使用Bootstrap-Flask内置函数渲染闪现消息 #}
+<br>
+{% block content %}{% endblock %} {# 内容块 #}
 </body>
 {% block scripts %} {# JS代码块 #}
     {{ bootstrap.load_js() }} {# 引入bootstrap-flask内置的JavaScript #}
+    {{ moment.include_moment() }}
+    {{ moment.locale('zh-cn') }} {# 设置flask-moment的语言，默认是英文 #}
 {% endblock %}
 </html>
