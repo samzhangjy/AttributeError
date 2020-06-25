@@ -2,6 +2,4 @@
 **/__pycache__/
 .env
 **/*.pyc
-*/__pycache__/
-/.idea/
 /.vscode/

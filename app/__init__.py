@@ -35,5 +35,8 @@ def create_app():
 
     from .user import user as user_bp
     app.register_blueprint(user_bp)
+    
+    from .question import question as question_bp
+    app.register_blueprint(question_bp)
 
     return app  # 返回app

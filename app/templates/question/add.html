@@ -1,0 +1,71 @@
+<!--app/templates/question/add.html-->
+{% extends 'base.html' %}
+{% from 'bootstrap/form.html' import render_field %}
+
+{% block title %}创建问题{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>创建问题</h1>
+    <hr>
+    <!--手动生成表单-->
+    <form method="POST" action="{{ url_for('question.add') }}">
+        <!--WTF的CSRF令牌-->
+        {{ form.csrf_token() }}
+        <!--渲染标题-->
+        {{ render_field(form.title) }}
+        <!--手动渲染正文框-->
+        <div id="editormd" style="border-radius: 5px;">
+            {{ form.body_markdown() }}
+        </div>
+        <!--渲染提交按钮-->
+        {{ render_field(form.submit, button_map={'submit': 'primary'}) }}
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<!--加载Editor.md的依赖文件-->
+<link rel="stylesheet" href="{{ url_for('static', filename='editormd/css/editormd.min.css') }}">
+<script src="{{ url_for('static',filename='editormd/editormd.min.js') }}"></script>
+<script>
+    // editor 变量
+    var editor;
+    $(function () {
+        // editor.md会自动定位位于“editormd”div中的第一个textarea
+        editor = editormd('editormd', {
+            // 站位文字
+            placeholder: '请输入问题介绍',
+            // 关闭自动锁定
+            autoFocus: false,
+            // 编辑器的高度
+            height: 640,
+            // 滚动锁定
+            syncScrolling: 'both',
+            // editormd的依赖库位置
+            path: "{{ url_for('static',filename='editormd/lib/') }}",
+            // 启用代码折叠
+            codeFold : true,
+            // 自动保存html到textarea中
+            saveHTMLToTextarea : true,
+            // 替换搜索
+            searchReplace : true,
+            // 表情
+            emoji : true,
+            // TODO表
+            taskList : true,
+            // 目录
+            tocm: true,
+            // tex公式
+            tex : true,
+            // 流程图
+            flowChart : true,
+            // 顺序图
+            sequenceDiagram : true,
+            // 不启用图片上传
+            imageUpload : false
+        });
+    });
+</script>
+{% endblock %}

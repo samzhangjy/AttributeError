@@ -9,6 +9,7 @@ from flask_avatars import Identicon
 
 
 class Role(db.Model):
+    """角色模型"""
     __tablename__ = 'role'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
@@ -35,6 +36,7 @@ class Role(db.Model):
 
 
 class User(db.Model, UserMixin):  # User类继承自db.Model
+    """用户模型"""
     __tablename__ = 'users'  # 定义表名
     id = db.Column(db.Integer, primary_key=True)  # 定义id，并且为主键
     username = db.Column(db.String(64))  # 用户名
@@ -51,7 +53,8 @@ class User(db.Model, UserMixin):  # User类继承自db.Model
     avatar_m = db.Column(db.String(128))
     avatar_l = db.Column(db.String(128))
     raw_avatar = db.Column(db.String(128))
-    background = db.Column(db.String(128))
+    # 提过的问题
+    questions = db.relationship('Question', backref='author', lazy='dynamic')
 
     def __init__(self, password, **kwargs):
         super().__init__(password=password, **kwargs)
@@ -90,3 +93,20 @@ class User(db.Model, UserMixin):  # User类继承自db.Model
 
     def __repr__(self):  # 定义User类的返回名称
         return '<User %s>' % self.username  # 返回 <User 用户名>
+
+
+class Question(db.Model):
+    """问题模型"""
+    __tablename__ = 'questions'
+    id = db.Column(db.Integer, primary_key=True)
+    # 问题标题
+    title = db.Column(db.String(64))
+    # Markdown格式的问题正文
+    body_markdown = db.Column(db.Text)
+    # HTML格式的问题正文
+    body_html = db.Column(db.Text)
+    # 发布者id
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    
+    def __repr__(self):
+        return '<Question %d>' % self.id
